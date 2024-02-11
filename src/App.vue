@@ -1,5 +1,5 @@
 <script>
-import AppComponent from "./components/AppComponent.vue"
+import AppComponent from "./components/AppComponent.vue";
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
@@ -14,30 +14,45 @@ export default {
 		}
 	},
 	mounted() {
-		this.doThings();
 
-		// axios.get("indirizzo").then(risultato => {
-		// 	console.log(risultato);
-		// }).catch(errore => {
-		// 	console.error(errore);
-		// });
+		axios.get(this.store.apiURL + "events").then(risultato => {
+			if (risultato.status == 200 && risultato.data.success) {
+				console.log(risultato.data.results);
+				this.store.events = risultato.data.results;
+				console.log(this.store.events);
+			}
+		}).catch(errore => {
+			console.error(errore);
+		});
 	},
 	methods: {
-		doThings() {
-			console.log("App.vue does things");
-		}
+
 	}
 }
 </script>
 
 <template>
 	<main>
-		<AppComponent />
-
-		<button class="btn btn-primary">
-			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
-			<span>Primary button</span>
-		</button>
+		<!-- 51:40 -->
+		<div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+			<div v-for="event in store.events" class="card h-100" style="width: 18rem;">
+				<div class="card-header">
+					{{ event.id + " - " + event.name }}
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">DESCRIPTION:</li>
+					<li class="list-group-item">{{ event.description }}</li>
+					<li class="list-group-item">AVAILABLE TICKETS:</li>
+					<li class="list-group-item">{{ event.available_tickets }}</li>
+					<li class="list-group-item">CREATED AT:</li>
+					<li class="list-group-item">{{ event.created_at }}</li>
+					<li class="list-group-item">UPDATED AT:</li>
+					<li class="list-group-item">{{ event.updated_at }}</li>
+					<li v-if="event.user_id" class="list-group-item">USER ID:</li>
+					<li v-if="event.user_id" class="list-group-item">{{ event.user_id }}</li>
+				</ul>
+			</div>
+		</div>
 	</main>
 </template>
 
@@ -53,5 +68,9 @@ export default {
 // ...qui eventuale SCSS di App.vue
 main {
 	padding: 1rem;
+}
+
+.d-flex {
+	height: 450px;
 }
 </style>
