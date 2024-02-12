@@ -33,7 +33,6 @@ export default {
 
 <template>
 	<main>
-		<!-- 51:40 -->
 		<div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
 			<div v-for="event in store.events" class="card h-100" style="width: 18rem;">
 				<div class="card-header">
@@ -44,12 +43,14 @@ export default {
 					<li class="list-group-item">{{ event.description }}</li>
 					<li class="list-group-item">AVAILABLE TICKETS:</li>
 					<li class="list-group-item">{{ event.available_tickets }}</li>
-					<li class="list-group-item">CREATED AT:</li>
+					<!-- <li class="list-group-item">CREATED AT:</li>
 					<li class="list-group-item">{{ event.created_at }}</li>
 					<li class="list-group-item">UPDATED AT:</li>
-					<li class="list-group-item">{{ event.updated_at }}</li>
-					<li v-if="event.user_id" class="list-group-item">USER ID:</li>
-					<li v-if="event.user_id" class="list-group-item">{{ event.user_id }}</li>
+					<li class="list-group-item">{{ event.updated_at }}</li> -->
+					<li v-if="event.tags" class="list-group-item">TAGS:</li>
+					<li v-for="tag in event.tags" class="list-group-item">{{ tag.name }}</li>
+					<li v-if="event.user_id" class="list-group-item">USER:</li>
+					<li v-if="event.user_id" class="list-group-item">{{ event.user.name }}</li>
 				</ul>
 			</div>
 		</div>
@@ -70,7 +71,7 @@ main {
 	padding: 1rem;
 }
 
-.d-flex {
-	height: 450px;
+.card {
+	min-height: 300px;
 }
 </style>
