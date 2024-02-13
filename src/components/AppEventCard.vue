@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: "AppCard",
+    name: "AppEventCard",
     props: [
         "name",
         "description",
@@ -16,7 +16,7 @@ export default {
 <template>
     <div class="container">
         <div class="row justify-content-center gap-3">
-            <div class="d-flex justify-content-center flex-wrap">
+            <div class="d-flex justify-content-center flex-wrap p-0">
                 <div class="card w-100 m-2 glass" style="width: 18rem;">
                     <div class="card-body">
                         <h3 class="card-title">{{ name }}</h3>
