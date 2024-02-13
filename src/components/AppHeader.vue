@@ -18,6 +18,10 @@ export default {
                 {
                     name: "Events",
                     url: "/events"
+                },
+                {
+                    name: "Tags",
+                    url: "/tags"
                 }
             ]
         };
@@ -29,14 +33,15 @@ export default {
 <template>
     <nav class="navbar navbar-expand-lg bg-light position-fixed w-100">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Navbar</a>
+            <a class="navbar-brand fw-bold" href="/">EVENT MANAGER</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <router-link v-for="item in menuItems" class="nav-link" :to="item.url">{{ item.name }}</router-link>
+                    <router-link v-for="item in menuItems" class="nav-link rounded-3" :to="item.url">{{ item.name
+                    }}</router-link>
                 </div>
             </div>
         </div>
@@ -54,6 +59,6 @@ nav {
 }
 
 .router-link-active {
-    background-color: aqua !important;
+    background-color: #dcb0d0 !important;
 }
 </style>
