@@ -25,7 +25,7 @@ export default {
         <div class="row">
             <h2>Results for <span class="badge rounded-pill me-2"
                     :class="store.tags.filter(tag => tag.name == $route.params.name)[0].color">{{ $route.params.name
-                    }}</span> tag</h2>
+                    }}</span>tag</h2>
         </div>
     </div>
 
