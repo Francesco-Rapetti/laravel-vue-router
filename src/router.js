@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
-import EventList from './components/EventList.vue';
+import EventList from './pages/EventList.vue';
 import EventDetails from './pages/EventDetails.vue';
-import TagList from './components/TagList.vue';
+import TagList from './pages/TagList.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -33,6 +33,11 @@ const router = createRouter({
             path: '/tags',
             name: 'tags',
             component: TagList
+        },
+        {
+            path: '/events/tag/:name',
+            name: 'tag-events',
+            component: EventList
         }
     ]
 });

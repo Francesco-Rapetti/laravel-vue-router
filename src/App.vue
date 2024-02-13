@@ -1,5 +1,5 @@
 <script>
-import EventList from "./components/EventList.vue";
+import EventList from "./pages/EventList.vue";
 import AppHeader from "./components/AppHeader.vue";
 
 import axios from 'axios'; //importo Axios
